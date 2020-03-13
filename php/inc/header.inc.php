@@ -37,7 +37,8 @@
                             Administration
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="participants.php">Listing participants</a>
+                            <a class="dropdown-item" href="listingCourses.php">Listing courses</a>
+                            <a class="dropdown-item" href="listingParticipants.php">Listing participants</a>
                             <a class="dropdown-item" href="historiqueParticipant.php">Historiques</a>
                             <a class="dropdown-item" href="gestioncourses.php">Gestion des courses</a>
                         </div>

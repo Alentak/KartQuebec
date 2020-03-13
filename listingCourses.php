@@ -1,6 +1,6 @@
 <?php include_once 'php/class/all.class.php'; ?>
 <?php include_once 'php/inc/head.inc.php'; ?>
-<title>Kart'Québéc - Connexion</title>
+<title>Kart'Québéc - Listing des courses</title>
 <?php include_once 'php/inc/header.inc.php';
 
 $courses = $db->Read("SELECT * FROM panier INNER JOIN membre ON (membre.Numero = panier.numeroMembre) INNER JOIN course ON (course.Numero = panier.numeroCourse) GROUP BY course.Numero");
@@ -51,6 +51,6 @@ $_SESSION["courses"] = $courses;
     <?php
     endforeach;
     ?>
-    <a href="listingParticipants.php" target="_blank"><i class="far fa-file-pdf" style="font-size:50px;color:salmon;"></i> Exporter au format PDF</a>
+    <a href="pdfCourses.php" target="_blank"><i class="far fa-file-pdf" style="font-size:50px;color:red;"></i> Exporter au format PDF</a>
 </main>
 <?php include_once 'php/inc/footer.inc.php'; ?>
