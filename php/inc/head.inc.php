@@ -1,5 +1,4 @@
 <?php 
-$db = new Database("localhost", "kartquebec", "root", "P@ssw0rd");
 //Pour les dates en français
 setlocale(LC_TIME, 'fra.utf8');
 session_start();

@@ -1,6 +1,7 @@
 <?php include_once 'php/class/all.class.php'; ?>
 <?php include_once 'php/inc/head.inc.php'; ?>
 <title>Kart'Québéc - Paiement</title>
+<link rel="stylesheet" href="css/style.css">
 <?php include_once 'php/inc/header.inc.php';
 
 $membre = $_SESSION['membre'];
@@ -13,12 +14,6 @@ if (isset($_POST["commander"])) {
     $courses = $db->Read("SELECT * FROM panier INNER JOIN course ON (panier.numeroCourse = course.Numero) WHERE estCommandee = false AND numeroMembre = '$membre->numero'");
 
     $total = 0;
-} else if (isset($_POST["payer"])) {
-    //TODO MODULE DE PAIMENT
-
-    //Met à jour le statut des course de non commandées à commandées en indiquant la date de commande
-    $db->Execute("UPDATE panier SET estCommandee = true, dateCommandee = NOW() WHERE numeroMembre='$membre->numero'");
-    header('location:courses.php');
 } else
     header('location:panier.php');
 
@@ -29,8 +24,8 @@ if (isset($_POST["commander"])) {
         <div class="col-4">
             <h3>Les courses commandées</h3>
             <?php
-            foreach ($courses as $c) :
-                $total += $c["Prix"];
+        foreach ($courses as $c) :
+            $total += $c["Prix"];
             ?>
                 <p>Nom de la course : <?= $c["Description"] ?><br>Date : <?= strftime("%d %B %Y", strtotime($c["Date"])) . " à " . date("H:i", strtotime($c["Date"])) ?><br>Prix : $<?= $c["Prix"] ?></p>
             <?php endforeach; ?>
@@ -38,11 +33,26 @@ if (isset($_POST["commander"])) {
         </div>
         <div class="col-8">
             <h3>Informations de paiement</h3>
-            <form method="POST">
-                <input class="form-control" type="text" placeholder="Carte">
-                <input type="submit" class="btn btn-primary" name="payer" value="Payer">
-            </form>
+            <form action="charge.php" method="post" id="payment-form">
+            <div class="form-row">
+                <input type="hidden" name="prix" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Nom" value="<?= $total ?>" required>
+
+                <div id="card-element" class="form-control mt-4">
+                    <!-- css BootStrap -->
+                    <!-- A Stripe Element will be inserted here. -->
+                </div>
+
+                <!-- Used to display form errors. -->
+                <div id="card-errors" role="alert"></div>
+            </div>
+
+            <button>Paiement</button>
+        </form>
         </div>
     </div>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="js/charge.js"></script>
 </main>
 <?php include_once 'php/inc/footer.inc.php'; ?>

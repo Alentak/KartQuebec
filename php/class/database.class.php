@@ -1,4 +1,6 @@
 <?php
+$db = new Database("localhost", "kartquebec", "root", "P@ssw0rd");
+
 class Database
 {
     private $server;
