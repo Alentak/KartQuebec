@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    font-family: 'Cambria';
+    text-shadow: gray .05em .05em .2em;
+}
+body{
+    background-image: url('../img/bg.jpg');
+    background-size: cover;
+}
+main{
+    background-color: rgba(240, 240, 240, .9);
+    border-radius: 5px;
+    padding: 10px;
+}
+header{
+    background-color: rgba(60, 60, 60, .9);
+    color: white;
+    padding: 50px 100px;
+    margin-bottom: 20px;
+}
+    header h1{
+        color: white;
+    }
+    header hr{
+        border: .5px solid white;
+    }
+nav{
+    box-shadow: black 0 .1em .5em;
+}
+main{
+    margin-top: 10px;
+}
+h1, h2, h3, h4, h5, h6{
+    color: rgb(64, 64, 128);
+}
+.btn, input, select, table{
+    box-shadow: gray .2em .2em .3em;
+}
+input[type="file"]{
+    box-shadow: none;
+}
+form input{
+    margin-bottom: 10px;
+}
+article{
+    background-color: rgba(222, 222, 222, .7);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    box-shadow: gray .2em .2em .3em;
+}
+    article p{
+        color: rgb(100, 100, 100);
+    }
+table{
+    text-align: center;
+}
+    th{
+        background-color: rgb(64, 64, 128);
+        color: white;
+    }
+
+    th, td{
+        padding: 5px 10px;
+        border: grey solid 1px;
+    }
+footer .alert{
+    background-color: rgba(240, 240, 240, .9);
+}
